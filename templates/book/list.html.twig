@@ -11,6 +11,7 @@
                 <th>Published</th>
                 <th>Category</th>
                 <th>Author</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +21,9 @@
                     <td>{{ book.publicationDate|date('F j, Y H:i') }}</td>
                     <td>{{ book.published ? 1 : 0 }}</td>
                     <td>{{ book.category }}</td>
-                    <td>{{ book.Author.getUsername }}</td>
+                    <td>{{ book.Author.getUsername }}</td>.
+                    <td> <a href="{{ path('update', { 'id': book.id }) }}" >edit</a></td>
+                    
                 </tr>
             {% else %}
                 <tr>

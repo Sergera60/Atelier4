@@ -37,6 +37,7 @@ class BookController extends AbstractController
 
             $em->persist($book);
             $em->flush();
+            return $this->redirectToRoute("list_books");
         }
         return $this->renderForm("book/add.html.twig", ["f" => $form]);
     }
@@ -65,6 +66,7 @@ class BookController extends AbstractController
 
             $em->persist($book);
             $em->flush();
+            return $this->redirectToRoute("list_books");
         }
         return $this->renderForm("book/update.html.twig", ["f" => $form]);
     }
