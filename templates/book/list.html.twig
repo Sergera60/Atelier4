@@ -23,7 +23,10 @@
                     <td>{{ book.category }}</td>
                     <td>{{ book.Author.getUsername }}</td>.
                     <td> <a href="{{ path('update', { 'id': book.id }) }}" >edit</a>
-                    <a href="{{ path('delete_book', { 'id': book.id }) }}" >delete</a></td>
+                    <a href="{{ path('delete_book', { 'id': book.id }) }}" >delete</a>
+                    <a href="{{ path('show_book', { 'id': book.id }) }}" >show</a>
+                    
+                    </td>
                    
                     
                 </tr>

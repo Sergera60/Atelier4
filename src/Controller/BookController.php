@@ -96,6 +96,15 @@ class BookController extends AbstractController
         return $this->redirectToRoute("list_books");
     }
 
+    #[Route('/showBook/{id}', name: "show_book")]
+
+    public function showBook($id, BookRepository $repo)
+    {
+        $book = $repo->find($id);
+        return $this->render("book/show.html.twig", ["book" => $book]);
+    }
+
+
 
 
 
