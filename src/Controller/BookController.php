@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Book;
 use App\Form\BookType;
 use App\Repository\BookRepository;
+use App\Repository\AuthorRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -70,4 +71,32 @@ class BookController extends AbstractController
         }
         return $this->renderForm("book/update.html.twig", ["f" => $form]);
     }
+
+
+
+    #[Route('/deleteBook/{id}', name: "delete_book")]
+    public function delete($id, ManagerRegistry $manager, BookRepository $repo, AuthorRepository $authorRepo)
+    {
+        $em = $manager->getManager();
+        $book = $repo->find($id);
+    
+        $author = $book->getAuthor();
+        $nb = $author->getNb_books() - 1;
+        $author->setNb_books($nb);
+    
+
+
+            $book->getAuthor()->setNb_books($nb);
+            if ($nb === 0) {
+                $em->remove($author);
+            }
+
+        $em->remove($book);
+        $em->flush();
+        return $this->redirectToRoute("list_books");
+    }
+
+
+
+
 }
