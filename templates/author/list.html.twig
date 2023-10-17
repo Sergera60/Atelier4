@@ -6,6 +6,7 @@
 <tr>
 <td>Username</td>
 <td>email</td>
+<td>nb_books</td>
 <td>Actions</td>
 
 </tr>
@@ -17,6 +18,7 @@
 <tr>
 <td>{{a.Username}}</td>
 <td>{{a.email}}</td>
+<td>{{ a.getBookCount() }}</td>
 <td><a href="{{ path('edit', {'ide': a.Id}) }}" class="edit">edit</a>
 <a href="{{ path('delete', {'ide': a.Id}) }}" class="delete">delete</a></td>
 
@@ -26,4 +28,10 @@
 
 </table>
 
-<a href="{{ path('add_author') }}" class="add">add author</a>
+<br>
+<div align='center'>
+<button onclick="location.href='{{ path('add_author') }}'">Add Author</button>
+<button onclick="location.href='{{ path('list_books') }}'">List of Books</button>
+
+</div>
+

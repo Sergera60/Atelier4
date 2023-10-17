@@ -32,7 +32,9 @@ class Author
         $this->books = new ArrayCollection();
     }
 
-
+    public function getBookCount(): int {
+        return $this->books->count();
+    }
    
 
 
