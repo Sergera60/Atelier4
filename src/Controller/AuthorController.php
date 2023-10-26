@@ -43,7 +43,7 @@ class AuthorController extends AbstractController
 #[Route('/list', name: 'app_list')]
 public function list (AuthorRepository $repo){
 
-    return $this->render('author/list.html.twig', ["auteurs" => $repo->findAll()]);
+    return $this->render('author/list.html.twig', ["auteurs" => $repo->listAuteurByEmail()]);
 }
  
 #[Route('/delete/{ide}', name: "delete")]
@@ -77,6 +77,7 @@ return $this->renderForm('author/edit.html.twig',[
 ]);
 
 }
+
 
 
     
