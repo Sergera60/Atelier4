@@ -34,7 +34,7 @@ class BookRepository extends ServiceEntityRepository
 
 public function searchBookByRef($ref){
 
-retturn $this ->createQueryBuilder('b')
+return $this ->createQueryBuilder('b')
 ->where('b.ref=: ref')
 ->setParameter('ref', $ref)
 ->getQuery()
